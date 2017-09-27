@@ -1,0 +1,19 @@
+
+def simplifyPath( path):
+    path_array = path.split("/")
+    stack = []
+    res_path = ""
+    for item in path_array:
+        if item not in ["",".",".."]:
+            stack.append(item)
+            if ".." == item and stack:
+                stack.pop(-1)
+            if []==stack:
+                return "/"
+            for item in stack:
+                res_path += "/"+item + ""
+            return res_path
+if __name__=="__main__":
+    str = input()
+    print(simplifyPath(str))
+
